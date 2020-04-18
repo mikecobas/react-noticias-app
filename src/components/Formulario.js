@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Formulario.module.css';
 import useSelect from '../hooks/useSelect'
 
-const Fromulario = () => {
+const Fromulario = ({guardarCategoria}) => {
 
     const OPCIONES = [
         {value:'general', label:'General'},
@@ -18,10 +18,17 @@ const Fromulario = () => {
 // eslint-disable-next-line 
     const [ categoria, SelectNoticias ] = useSelect('general', OPCIONES);
 
+    const buscarNoticia = e =>{
+        e.preventDefault()
+        guardarCategoria(categoria);
+    }
+
     return ( 
         <div className={`${styles.buscador} row`}>
             <div className="col s12 m8 offset-m2">
-            <form>
+            <form 
+                onSubmit={buscarNoticia}
+            >
                 <h2 className={styles.heading}>Encuentra Noticias por Categoría</h2>
                 <SelectNoticias />
                 <div className="input-field col s12">
