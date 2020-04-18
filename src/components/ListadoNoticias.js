@@ -4,7 +4,7 @@ import Noticia from './Noticias';
 const ListadoNoticias = ({noticias}) => (
     <div className="row">
             {noticias.map(noticia =>(
-                <Noticia />
+                <Noticia key={noticia.url}  noticia={noticia}/>
             ))}
     </div>
 );
